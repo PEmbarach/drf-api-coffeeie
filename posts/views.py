@@ -33,14 +33,15 @@ class PostList(APIView):
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
 
+
 class PostDetail(APIView):
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class =PostSerializer
+    serializer_class = PostSerializer
 
     def get_object(self, pk):
         try:
             post = Post.objects.get(pk=pk)
-            self.check_object_permissions(aelf.request, post)
+            self.check_object_permissions(self.request, post)
             return post
         except Post.DoesNotExist:
             raise Http404
@@ -59,7 +60,7 @@ class PostDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.date)
+            return Response(serializer.data)
         return Response(
             serializer.errors, status=status.HHTP_400_BAD_REQUEST
         )
