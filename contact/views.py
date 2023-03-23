@@ -1,9 +1,9 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import Contact
-from .serializer import ContactSerializer
+from .serializers import ContactSerializer
 
 
-class ContactDetail(generics.ListCreateAPIView):
-    """Allows user to submit contact form"""
-    serializer_class = ContactSerializer
+class ContactList(generics.ListCreateAPIView):
     queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
