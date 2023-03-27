@@ -36,6 +36,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     price = models.TextField(max_length=50, blank=True)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
+    content = models.TextField(blank=True)
     location = models.TextField(max_length=255, blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True

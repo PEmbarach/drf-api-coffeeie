@@ -45,4 +45,5 @@ class PostSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'image', 'title', 'price', 'rate', 'location',
             'like_id', 'likes_count', 'comments_count',
+            'content',
         ]
